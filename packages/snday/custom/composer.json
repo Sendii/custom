@@ -1,0 +1,17 @@
+{
+    "name": "snday/custom",
+    "description": "Customize query and more for laravel",
+    "type": "project",
+    "authors": [
+        {
+            "name": "Sendii",
+            "email": "sendiiaja@gmail.com"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "Snday\\Custom\\": "src/"
+        }
+    },
+    "require": {}
+}

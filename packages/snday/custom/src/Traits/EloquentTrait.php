@@ -5,7 +5,7 @@ use Snday\Custom\Traits\FileTrait;
 
 trait EloquentTrait{
 	use FileTrait;
-
+	public $filename;
 
 	public function store(array $request, $uploadFile=false){
 		\DB::beginTransaction();
@@ -13,7 +13,9 @@ trait EloquentTrait{
 
 		try {
 			if ($uploadFile) {
-				$this->uploadFile($request);
+				$field_file = $this->uploadFile($request);
+				// update file field  
+				$request[$field_file] = $this->filename;
 			}
 			$this->_model->create($request);
 

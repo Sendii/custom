@@ -1,32 +1,21 @@
 <?php
 
 namespace Snday\Custom;
+use Snday\Custom\Traits\EloquentTrait;
 
 class Customize{
+	use EloquentTrait;
 
 	//get receive parame as new object
 	public function __construct($_model=''){
-		$this->model = new $_model;
+		$this->_model = new $_model;
 	}
 
 	public function getData(){
-		dd($this->model->get());
+		// return response($this->model->get());
 	}
 
-	public function storeData(array $request){
-		\DB::beginTransaction();
-		$status = false;
-
-		try {
-			$this->model->create($request);
-
-			\DB::commit();
-			$status = true;
-		} catch (\Exception $e) {
-			\DB::rollback();
-
-			throw $e;
-		}
-		return $status ? 'Berhasil Menambah Data' : 'Gagal Menambah Data';
+	public function storeData($request, $uploadFile=false){
+		return $this->store($request, $uploadFile);
 	}
 }

@@ -18,6 +18,10 @@ use Illuminate\Http\Request;
 // 	$a = new Customize(\App\User::class);
 // 	return $a->getData();
 // });
+Route::get('delete', function(){
+	$a = new Customize(\App\User::class);
+	return $a->deleteData(1);
+});
 Route::post('/save', function (Request $req) {
     $a = new Customize(\App\User::class);
     // return $a->storeData($req->all(), true);

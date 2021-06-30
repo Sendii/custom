@@ -52,4 +52,21 @@ trait EloquentTrait{
 		}
 		return $status ? 'Berhasil Mengubah Data' : 'Gagal Mengubah Data';
 	}
+
+	public function destroy($id){
+		\DB::beginTransaction();
+		$status = false;
+
+		try {
+			$table = $this->_model->findOrFail($id)->delete();
+
+			\DB::commit();
+			$status = true;
+		} catch (\Exception $e) {
+			\DB::rollback();
+
+			throw $e;
+		}
+		return $status ? 'Berhasil Menghapus Data' : 'Gagal Menghapus Data';
+	}
 }

@@ -6,7 +6,6 @@ use Snday\Custom\Traits\EloquentTrait;
 class Customize{
 	use EloquentTrait;
 
-	//get receive parame as new object
 	public function __construct($_model=''){
 		$this->_model = new $_model;
 	}
@@ -21,5 +20,9 @@ class Customize{
 
 	public function updateData($id, $request, $uploadFile=false){
 		return $this->update($id, $request, $uploadFile);
+	}
+
+	public function deleteData($id){
+		return $this->destroy($id);
 	}
 }

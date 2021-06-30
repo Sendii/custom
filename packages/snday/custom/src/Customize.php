@@ -18,4 +18,8 @@ class Customize{
 	public function storeData($request, $uploadFile=false){
 		return $this->store($request, $uploadFile);
 	}
+
+	public function updateData($id, $request, $uploadFile=false){
+		return $this->update($id, $request, $uploadFile);
+	}
 }
